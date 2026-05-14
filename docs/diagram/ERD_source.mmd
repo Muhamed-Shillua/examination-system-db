@@ -1,0 +1,118 @@
+---
+config:
+  layout: elk
+  theme: neutral
+  look: handDrawn
+---
+erDiagram
+
+    STUDENT {
+        int StudentID PK
+        string Name
+        string Email
+        string Phone
+        string Address
+        char Gender
+        date BirthDate
+        int DepartmentID FK
+    }
+
+    DEPARTMENT {
+        int DepartmentID PK
+        string DepartmentName
+        int ManagerID FK
+    }
+
+    INSTRUCTOR {
+        int InstructorID PK
+        string Name
+        string Email
+        money Salary
+        string Degree
+        int DepartmentID FK
+    }
+
+    COURSE {
+        int CourseID PK
+        string CourseName
+        string Description
+        int DepartmentID FK
+    }
+
+    COURSE_TOPIC {
+        int TopicID PK
+        int CourseID FK
+        string TopicName
+    }
+
+    EXAM {
+        int ExamID PK
+        int CourseID FK
+        datetime ExamDate
+        int TotalMarks
+    }
+
+    QUESTION {
+        int QuestionID PK
+        int ExamID FK
+        string QuestionText
+        int Mark
+    }
+
+    CHOICE {
+        int ChoiceID PK
+        int QuestionID FK
+        string ChoiceText
+        boolean IsCorrect
+    }
+
+    STUDENT_COURSE {
+        int StudentID PK, FK
+        int CourseID PK, FK
+        date EnrollmentDate
+        float FinalGrade
+        string Status
+    }
+
+    INSTRUCTOR_COURSE {
+        int InstructorID PK, FK
+        int CourseID PK, FK
+        date AssignedDate
+        string Role
+    }
+
+    STUDENT_ANSWER {
+        int StudentID PK, FK
+        int QuestionID PK, FK
+        int SelectedChoiceID FK
+        datetime AnswerTime
+    }
+
+    GRADE {
+        int StudentID PK, FK
+        int ExamID PK, FK
+        float Score
+    }
+
+    DEPARTMENT ||--o{ STUDENT : has
+    DEPARTMENT ||--o{ INSTRUCTOR : has
+    DEPARTMENT ||--o{ COURSE : offers
+
+    COURSE ||--o{ COURSE_TOPIC : contains
+    COURSE ||--o{ EXAM : has
+
+    EXAM ||--o{ QUESTION : includes
+    QUESTION ||--o{ CHOICE : has
+
+    STUDENT ||--o{ STUDENT_COURSE : enrolls
+    COURSE ||--o{ STUDENT_COURSE : includes
+
+    INSTRUCTOR ||--o{ INSTRUCTOR_COURSE : assigned
+    COURSE ||--o{ INSTRUCTOR_COURSE : taught_by
+
+    STUDENT ||--o{ STUDENT_ANSWER : submits
+    QUESTION ||--o{ STUDENT_ANSWER : answered_in
+    CHOICE ||--o{ STUDENT_ANSWER : selected
+
+    STUDENT ||--o{ GRADE : receives
+    EXAM ||--o{ GRADE : produces
