@@ -1,0 +1,85 @@
+
+# =========================
+# Operating System Files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# VS Code Settings
+# =========================
+.vscode/
+*.code-workspace
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# SQL Server / Database Files (Local Dev)
+# =========================
+*.mdf
+*.ldf
+*.ndf
+*.bak
+*.trn
+*.dif
+
+# SQL Server LocalDB
+*.sqllocaldb
+
+# =========================
+# Temporary Files
+# =========================
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# =========================
+# Exported Documents (optional local)
+# =========================
+docs/pdf/*.pdf
+docs/temp/
+
+# =========================
+# Mermaid / Diagram Cache (if any tools generate cache)
+# =========================
+*.cache
+
+# =========================
+# Node (if later used for tooling)
+# =========================
+node_modules/
+
+# =========================
+# Python (if later used for PDF generation)
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# =========================
+# Backup Files
+# =========================
+*.backup
+*.bak
+
+# =========================
+# Environment Files (if added later)
+# =========================
+.env
+.env.local
+.env.*.local
+
+# =========================
+# Git Ignore Exceptions (keep structure)
+# =========================
+!.gitkeep
